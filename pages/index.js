@@ -1,12 +1,18 @@
 // pages/index.js
 import { useRouter } from 'next/router';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 export default function Home() {
   const router = useRouter();
 
+  // 🔁 Trigger IP logging when user visits homepage
+  useEffect(() => {
+    fetch('/api/log'); // Triggers log.js
+  }, []);
+
   const handleJoinNow = () => {
-    router.push('/api/log');
+    router.push('/api/log'); // Redirects + logs again
   };
 
   return (
